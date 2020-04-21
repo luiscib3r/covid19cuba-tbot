@@ -13,7 +13,7 @@ bot.start(async ctx => {
 
     bot.telegram.sendChatAction(chatId || 0, 'typing')
 
-    ctx.replyWithMarkdown(`
+    ctx.replyWithHTML(`
 🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
 🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy}
 🤧 <b>Activos</b>: ${res.data.activos}
