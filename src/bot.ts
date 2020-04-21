@@ -1,32 +1,13 @@
-import Telegraf from 'telegraf'
-
-import axios, { AxiosResponse } from 'axios'
-import summary from './types/summary'
+import Telegraf, {ContextMessageUpdate} from 'telegraf'
 
 const bot = new Telegraf(process.env.BOT_TOKEN || '')
 
-bot.start(async ctx => {
-    let res: AxiosResponse<summary> = 
-        await axios.get(process.env.API_URI + 'summary' || 'http://localhost:3000/summary')
+import start from './controllers/start.controller'
+import summary from './controllers/summary.controller'
 
-    let chatId = ctx.message?.chat.id
+bot.start(start)
 
-    bot.telegram.sendChatAction(chatId || 0, 'typing')
-
-    ctx.replyWithHTML(`
-🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
-🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy}
-🤧 <b>Activos</b>: ${res.data.activos}
-😃 <b>Recuperados</b>: ${res.data.total_recuperados}
-🤩 <b>Índice de Recuperación</b>: ${res.data.recuperacion}%
-✈️ <b>Evacuados</b>: ${res.data.total_evacuados}
-⚰️ <b>Fallecidos</b>: ${res.data.total_fallecidos}
-😵 <b>Mortalidad</b>: ${res.data.mortalidad}%
-🏥 <b>Ingresados</b>: ${res.data.total_ingresados}
-📆 <b>Actualizado</b>: ${res.data.fecha}
-`)
-
-})
+bot.command('summary', summary)
 
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
 
