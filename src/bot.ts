@@ -28,6 +28,18 @@ bot.command('casos_extranjeros', casos_extranjeros)
 bot.command('nacionalidad', nacionalidad)
 bot.command('about', about)
 
+// Keyboard handlers
+bot.hears('☢️ Resumen', summary)
+bot.hears('⏳ Evolución de casos por días', evolution)
+bot.hears('📝 Datos de los Tests realizados', test)
+bot.hears('🇨🇺 Casos por provincias', provincias)
+bot.hears('🚻 Casos por Sexo', sexo)
+bot.hears('👶🏻🧔🏽 Distribución por grupos etarios', edad)
+bot.hears('🦠 Modo de Contagio', modo)
+bot.hears('🌏 Casos por Nacionalidad (Cubanos/Extranjeros)', nacionalidad)
+bot.hears('🗺 Distribución por nacionalidad', casos_extranjeros)
+bot.hears('ℹ️ Acerca de', about)
+
 bot.on('inline_query', inline_handler)
 
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)

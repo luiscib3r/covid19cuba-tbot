@@ -1,6 +1,23 @@
-import {ContextMessageUpdate} from 'telegraf'
+import { ContextMessageUpdate, Markup } from 'telegraf'
 import axios, { AxiosResponse } from 'axios'
 import summary from '../types/summary'
+
+let keyboard = Markup
+    .keyboard([
+      ['☢️ Resumen'],
+      ['⏳ Evolución de casos por días'],
+      ['📝 Datos de los Tests realizados'],
+      ['🇨🇺 Casos por provincias'],
+      ['🚻 Casos por Sexo'],
+      ['👶🏻🧔🏽 Distribución por grupos etarios'],
+      ['🦠 Modo de Contagio'],
+      ['🌏 Casos por Nacionalidad (Cubanos/Extranjeros)'],
+      ['🗺 Distribución por nacionalidad'],
+      ['ℹ️ Acerca de'], 
+    ])
+    .oneTime()
+    .resize()
+    .extra()
 
 export default async (ctx: ContextMessageUpdate) => {
     let res: AxiosResponse<summary> = 
@@ -21,5 +38,5 @@ export default async (ctx: ContextMessageUpdate) => {
 😵 <b>Mortalidad</b>: ${res.data.mortalidad}%
 🏥 <b>Ingresados</b>: ${res.data.total_ingresados}
 📆 <b>Actualizado</b>: ${res.data.fecha}
-`)
+`, keyboard)
 }
