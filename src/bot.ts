@@ -4,7 +4,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN || '')
 
 import start from './controllers/start.controller'
 import summary from './controllers/summary.controller'
-import evolution from './controllers/summary.controller'
+import evolution from './controllers/evolution.controller'
 
 bot.start(start)
 bot.command('summary', summary)
