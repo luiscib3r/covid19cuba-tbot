@@ -25,5 +25,7 @@ export default async (ctx: ContextMessageUpdate) => {
 
     ctx.telegram.sendChatAction(chatId || 0, 'typing')
 
-    ctx.replyWithPhoto(`${process.env.API_URI}summary_graph`)
+    let graph = await axios.get(`${process.env.API_URI}summary_graph`, {responseType: 'arraybuffer'})
+
+    ctx.replyWithPhoto({source: Buffer.from(graph.data)})
 }
