@@ -12,6 +12,7 @@ import edad from './controllers/edad.controller'
 import modo from './controllers/modo.controller'
 import casos_extranjeros from './controllers/casos_extranjeros.controller'
 import nacionalidad from './controllers/nacionalidad.controller'
+import about from './controllers/about.controller'
 
 import inline_handler from './controllers/inline.controller'
 
@@ -25,6 +26,7 @@ bot.command('edad', edad)
 bot.command('modo', modo)
 bot.command('casos_extranjeros', casos_extranjeros)
 bot.command('nacionalidad', nacionalidad)
+bot.command('about', about)
 
 bot.on('inline_query', inline_handler)
 
