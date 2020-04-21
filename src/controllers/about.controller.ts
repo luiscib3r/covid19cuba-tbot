@@ -15,7 +15,7 @@ export default async (ctx: ContextMessageUpdate) => {
 Apklis: https://www.apklis.cu/application/club.postdata.covid19cuba
 
 👨‍💻 <b>Bot Source Code</b>:
-https://github.com/correaleyval/covid19cuba_bot
+https://github.com/correaleyval
 
 💪💻 <b>Partners</b>:
 * Covid19CubaData
