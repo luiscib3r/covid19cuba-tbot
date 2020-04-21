@@ -9,6 +9,10 @@ bot.start(async ctx => {
     let res: AxiosResponse<summary> = 
         await axios.get(process.env.API_URI + 'summary' || 'http://localhost:3000/summary')
 
+    let chatId = ctx.message?.chat.id
+
+    bot.telegram.sendChatAction(chatId || 0, 'typing')
+
     ctx.replyWithMarkdown(`
 🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
 🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy}
