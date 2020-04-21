@@ -24,7 +24,7 @@ export default async (ctx: ContextMessageUpdate) => {
 ⚰️ Fallecidos: ${res.data.total_fallecidos}
 😵 Mortalidad: ${res.data.mortalidad}%
 🏥 Ingresados: ${res.data.total_ingresados}
-📆 Actualizado: ${res.data.fecha})
+📆 Actualizado: ${res.data.fecha}
 
 Mas información en @covid19cubadata_bot
                 `
