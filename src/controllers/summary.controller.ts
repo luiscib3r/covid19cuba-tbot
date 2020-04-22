@@ -21,7 +21,7 @@ export default async (ctx: ContextMessageUpdate) => {
 
     }
     catch (err) {
-        
+        console.error(err)
     }
 
     let res: AxiosResponse<summary> = 

@@ -34,10 +34,10 @@ export default async (ctx: ContextMessageUpdate) => {
         let ch = await ChatModel.findOneAndUpdate({id: chat.id}, chat)
 
         if(!ch) ChatModel.create(chat)
-        
+
     }
     catch (err) {
-        
+        console.error(err)
     }
 
     let res: AxiosResponse<summary> = 
