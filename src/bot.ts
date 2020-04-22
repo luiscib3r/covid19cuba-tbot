@@ -54,7 +54,8 @@ bot.command('userid', async ctx => {
 })
 
 bot.command('notify', async ctx => {
-    ctx.reply(ctx.message?.text || 'Not message')
+    let text = ctx.message?.text?.replace('/notify', '')
+    ctx.reply(text || 'Not message')
 })
 
 
