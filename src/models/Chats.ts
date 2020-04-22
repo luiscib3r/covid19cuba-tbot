@@ -1,15 +1,17 @@
 import { Schema, model, Document } from 'mongoose'
 
-export interface IUser extends Document {
+export interface IChat extends Document {
     id: number
     username: string | undefined
     first_name: string | undefined
     last_name: string | undefined
     description: string | undefined
-    type: string | undefined
+    invite_link: string | undefined
+    title: string | undefined
+    type: string
 }
 
-const userSchema = new Schema({
+const chatSchema = new Schema({
     id: {
         type: Number,
         unique: true
@@ -23,6 +25,18 @@ const userSchema = new Schema({
     last_name: {
         type: String,
     },
+    description: {
+        type: String
+    },
+    invite_link: {
+        type: String
+    },
+    title: {
+        type: String
+    },
+    type: {
+        type: String
+    } 
 }, { timestamps: true })
 
-export default model<IUser>('user', userSchema)
+export default model<IChat>('user', chatSchema)

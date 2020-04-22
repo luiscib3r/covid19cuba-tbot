@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios'
 import summary from '../types/summary'
 
 import UserModel from '../models/User'
+import ChatModel from '../models/Chats'
 
 let keyboard = Markup
     .keyboard([
@@ -27,6 +28,13 @@ export default async (ctx: ContextMessageUpdate) => {
 
     try {
         await UserModel.create(ctx.from)
+
+        let chat = await ctx.getChat()
+
+        let ch = await ChatModel.findOneAndUpdate({id: chat.id}, chat)
+
+        if(!ch) ChatModel.create(chat)
+        
     }
     catch (err) {
         

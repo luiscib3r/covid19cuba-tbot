@@ -42,6 +42,16 @@ bot.hears('ℹ️ Acerca de', about)
 
 bot.on('inline_query', inline_handler)
 
+// Notify System
+bot.command('chatid', async ctx => {
+    let chatId = ctx.chat?.id
+    ctx.reply(chatId?.toString() || 'Not chat id')
+})
+
+bot.command('notify', async ctx => {
+    ctx.reply(ctx.message?.text || 'Not message')
+})
+
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
 
 export default bot
