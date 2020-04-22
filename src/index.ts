@@ -2,6 +2,8 @@ import bot from './bot'
 
 import express from 'express'
 
+import './database'
+
 const app = express()
 app.get('/', (_, res) => res.send('Vip Vip'))
 
