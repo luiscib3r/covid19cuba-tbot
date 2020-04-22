@@ -48,6 +48,11 @@ bot.command('chatid', async ctx => {
     ctx.reply(chatId?.toString() || 'Not chat id')
 })
 
+bot.command('userid', async ctx => {
+    let userId = ctx.from?.id
+    ctx.reply(userId?.toString() || 'Not user id')
+})
+
 bot.command('notify', async ctx => {
     ctx.reply(ctx.message?.text || 'Not message')
 })

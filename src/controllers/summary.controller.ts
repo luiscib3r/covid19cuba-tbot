@@ -7,11 +7,16 @@ import ChatModel from '../models/Chats'
 
 export default async (ctx: ContextMessageUpdate) => {
     let chatId = ctx.message?.chat.id
+    let userId = ctx.from?.id
 
     ctx.telegram.sendChatAction(chatId || 0, 'typing')
 
     try {
-        await UserModel.create(ctx.from)
+        if (ctx.from) {
+            let user = await UserModel.findOneAndUpdate({id: userId}, ctx.from)
+
+            if (!user) await UserModel.create(ctx.from)
+        }
 
         let chat = await ctx.getChat()
 
