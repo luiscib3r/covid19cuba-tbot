@@ -2,6 +2,8 @@ import { ContextMessageUpdate, Markup } from 'telegraf'
 import axios, { AxiosResponse } from 'axios'
 import summary from '../types/summary'
 
+import UserModel from '../models/User'
+
 let keyboard = Markup
     .keyboard([
       ['☢️ Resumen'],
@@ -20,12 +22,18 @@ let keyboard = Markup
     .extra()
 
 export default async (ctx: ContextMessageUpdate) => {
+    let chatId = ctx.message?.chat.id
+    ctx.telegram.sendChatAction(chatId || 0, 'typing')
+
+    try {
+        await UserModel.create(ctx.from)
+    }
+    catch (err) {
+        
+    }
+
     let res: AxiosResponse<summary> = 
         await axios.get(process.env.API_URI + 'summary')
-
-    let chatId = ctx.message?.chat.id
-
-    ctx.telegram.sendChatAction(chatId || 0, 'typing')
 
     ctx.replyWithHTML(`
 🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
