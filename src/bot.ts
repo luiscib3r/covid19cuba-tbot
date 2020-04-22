@@ -57,6 +57,12 @@ bot.command('notify', async ctx => {
     ctx.reply(ctx.message?.text || 'Not message')
 })
 
+
+// catch message from group chat
+bot.telegram.getMe().then((botInfo) => {
+    bot.options.username = botInfo.username
+})
+
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
 
 export default bot
