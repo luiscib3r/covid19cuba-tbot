@@ -13,6 +13,7 @@ import modo from './controllers/modo.controller'
 import casos_extranjeros from './controllers/casos_extranjeros.controller'
 import nacionalidad from './controllers/nacionalidad.controller'
 import about from './controllers/about.controller'
+import notify from './controllers/notify.controller'
 
 import inline_handler from './controllers/inline.controller'
 
@@ -53,11 +54,7 @@ bot.command('userid', async ctx => {
     ctx.reply(userId?.toString() || 'Not user id')
 })
 
-bot.command('notify', async ctx => {
-    let text = ctx.message?.text?.replace('/notify', '')
-    ctx.reply(text || 'Not message')
-})
-
+bot.command('notify', notify)
 
 // catch message from group chat
 bot.telegram.getMe().then((botInfo) => {
