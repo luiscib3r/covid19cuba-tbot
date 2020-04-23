@@ -12,7 +12,12 @@ export default async (ctx: ContextMessageUpdate) => {
 
         chats.forEach(c => {
             if (text)
-                ctx.tg.sendMessage(c.id, text)
+                try {
+                    ctx.tg.sendMessage(c.id, text)
+                }
+                catch (err) {
+                    console.log(err)
+                }
             else
                 ctx.tg.sendMessage(process.env.ADMIN_UID || 0, "Not Text for notify")
         })
