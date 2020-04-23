@@ -5,18 +5,20 @@ import summary from '../types/summary'
 import UserModel from '../models/User'
 import ChatModel from '../models/Chats'
 
+import nogroup from './nogroup';
+
 let keyboard = Markup
     .keyboard([
-      ['☢️ Resumen'],
-      ['⏳ Evolución de casos por días'],
-      ['📝 Datos de los Tests realizados'],
-      ['🇨🇺 Casos por provincias'],
-      ['🚻 Casos por Sexo'],
-      ['👶🏻🧔🏽 Distribución por grupos etarios'],
-      ['🦠 Modo de Contagio'],
-      ['🌏 Casos por Nacionalidad (Cubanos/Extranjeros)'],
-      ['🗺 Distribución por nacionalidad'],
-      ['ℹ️ Acerca de'], 
+        ['☢️ Resumen'],
+        ['⏳ Evolución de casos por días'],
+        ['📝 Datos de los Tests realizados'],
+        ['🇨🇺 Casos por provincias'],
+        ['🚻 Casos por Sexo'],
+        ['👶🏻🧔🏽 Distribución por grupos etarios'],
+        ['🦠 Modo de Contagio'],
+        ['🌏 Casos por Nacionalidad (Cubanos/Extranjeros)'],
+        ['🗺 Distribución por nacionalidad'],
+        ['ℹ️ Acerca de'],
     ])
     .oneTime()
     .resize()
@@ -29,26 +31,33 @@ export default async (ctx: ContextMessageUpdate) => {
 
     try {
         if (ctx.from) {
-            let user = await UserModel.findOneAndUpdate({id: userId}, ctx.from)
+            let user = await UserModel.findOneAndUpdate({ id: userId }, ctx.from)
 
             if (!user) await UserModel.create(ctx.from)
         }
 
         let chat = await ctx.getChat()
 
-        let ch = await ChatModel.findOneAndUpdate({id: chat.id}, chat)
+        let ch = await ChatModel.findOneAndUpdate({ id: chat.id }, chat)
 
-        if(!ch) ChatModel.create(chat)
+        if (!ch) ChatModel.create(chat)
 
     }
     catch (err) {
         console.error(err)
     }
 
-    let res: AxiosResponse<summary> = 
-        await axios.get(process.env.API_URI + 'summary')
+    let type = ctx.chat?.type
 
-    ctx.replyWithHTML(`
+    if (type === 'supergroup' || type === 'group') {
+        nogroup(ctx)
+    }
+    else {
+
+        let res: AxiosResponse<summary> =
+            await axios.get(process.env.API_URI + 'summary')
+
+        ctx.replyWithHTML(`
 🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
 🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy}
 🤧 <b>Activos</b>: ${res.data.activos}
@@ -60,4 +69,5 @@ export default async (ctx: ContextMessageUpdate) => {
 🏥 <b>Ingresados</b>: ${res.data.total_ingresados}
 📆 <b>Actualizado</b>: ${res.data.fecha}
 `, keyboard)
+    }
 }
