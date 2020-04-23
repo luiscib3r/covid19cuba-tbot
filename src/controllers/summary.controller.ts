@@ -41,9 +41,20 @@ export default async (ctx: ContextMessageUpdate) => {
         let res: AxiosResponse<summary> =
             await axios.get(process.env.API_URI + 'summary')
 
+        var diff = ''
+
+        let val = Math.abs(res.data.diferencia_ayer)
+
+        if(res.data.diferencia_ayer > 0) {
+            diff = `(🔺${val})`
+        }
+        else {
+            diff = `(🔻${val})`
+        }
+
         ctx.replyWithHTML(`
 🤒 <b>Diagnosticados</b>: ${res.data.total_diagnosticados}
-🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy}
+🔬 <b>Diagnosticados hoy</b>: ${res.data.diagnosticados_hoy} ${diff}
 🤧 <b>Activos</b>: ${res.data.activos}
 😃 <b>Recuperados</b>: ${res.data.total_recuperados}
 🤩 <b>Índice de Recuperación</b>: ${res.data.recuperacion}%
