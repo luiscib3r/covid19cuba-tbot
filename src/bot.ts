@@ -61,6 +61,8 @@ bot.telegram.getMe().then((botInfo) => {
     bot.options.username = botInfo.username
 })
 
+bot.options.channelMode = true
+
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
 
 export default bot
