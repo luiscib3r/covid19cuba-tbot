@@ -17,6 +17,8 @@ import notify from './controllers/notify.controller'
 
 import inline_handler from './controllers/inline.controller'
 
+import channel_handler from './controllers/channel_handler.constroller';
+
 bot.start(start)
 bot.command('summary', summary)
 bot.command('evolution', evolution)
@@ -61,11 +63,7 @@ bot.telegram.getMe().then((botInfo) => {
     bot.options.username = botInfo.username
 })
 
-bot.on('channel_post', ctx => {
-    console.log(`ID: ${ctx.chat?.id}`)
-    console.log(`TYPE: ${ctx.chat?.type}`)
-    console.log(ctx.channelPost)
-})
+bot.on('channel_post', channel_handler)
 
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
 
