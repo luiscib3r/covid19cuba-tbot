@@ -61,6 +61,12 @@ bot.telegram.getMe().then((botInfo) => {
     bot.options.username = botInfo.username
 })
 
+bot.on('message', ctx => {
+    console.log(ctx.chat?.type)
+
+    console.log(ctx.message?.text)
+})
+
 bot.options.channelMode = true
 
 bot.telegram.setWebhook(`${process.env.BOT_URI}/bot${process.env.BOT_TOKEN}`)
