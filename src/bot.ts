@@ -62,9 +62,9 @@ bot.telegram.getMe().then((botInfo) => {
 })
 
 bot.on('message', ctx => {
-    console.log(ctx.chat?.type)
-
-    console.log(ctx.message?.text)
+    console.log(`ID: ${ctx.chat?.id}`)
+    console.log(`TYPE: ${ctx.chat?.type}`)
+    console.log(ctx.channelPost)
 })
 
 bot.options.channelMode = true
