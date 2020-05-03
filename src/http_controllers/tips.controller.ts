@@ -48,7 +48,7 @@ const messages = [
 - tos
 - fiebre
 - dificultad para respirar (en casos graves)`,
-    `El COVID-19 se caracteriza por síntomas leves, como, dolor de garganta, tos y fiebre. La enfermedad puede ser más grave en algunas personas y provocar neumonía o dificultades respiratorias. Más raramente puede ser mortal. Las personas de edad avanzada y las personas con otras afecciones médicas (como asma, diabetes o cardiopatías) pueden ser más vulnerables y enfermar de gravedad`,
+    `La COVID-19 se caracteriza por síntomas leves, como, dolor de garganta, tos y fiebre. La enfermedad puede ser más grave en algunas personas y provocar neumonía o dificultades respiratorias. Más raramente puede ser mortal. Las personas de edad avanzada y las personas con otras afecciones médicas (como asma, diabetes o cardiopatías) pueden ser más vulnerables y enfermar de gravedad`,
     `El nuevo coronavirus se propaga principalmente por contacto directo (1 metro o 3 pies) con una persona infectada cuando tose o estornuda, o por contacto con sus gotículas respiratorias (saliva o secreciones nasales).`,
     `Cómo ponerse, usar, quitarse y desechar una mascarilla
 
@@ -81,7 +81,7 @@ Aunque ha habido un caso de un perro infectado en Hong Kong, hasta la fecha no h
     `¿Cuánto tiempo sobrevive el virus en una superficie?
 
 No se sabe con certeza cuánto tiempo sobrevive el virus causante de la COVID-19 en una superficie, pero parece comportarse como otros coronavirus. Los estudios realizados (incluida la información preliminar disponible sobre el virus de la COVID-19) indican que los coronavirus pueden subsistir en una superficie desde unas pocas horas hasta varios días. El tiempo puede variar en función de las condiciones (por ejemplo, el tipo de superficie, la temperatura o la humedad del ambiente). Si cree que una superficie puede estar infectada, límpiela con un desinfectante común para matar el virus y protegerse de este modo a usted mismo y a los demás. Lávese las manos con un desinfectante a base de alcohol o con agua y jabón. Evite tocarse los ojos, la boca o la nariz.`,
-    `¿El virus COVID-19 puede transmitirse en zonas con climas cálidos y húmedos?
+    `¿La COVID-19 puede transmitirse en zonas con climas cálidos y húmedos?
 Las pruebas científicas obtenidas hasta ahora indican que el virus de la COVID-19 puede transmitirse en CUALQUIER ZONA, incluidas las de clima cálido y húmedo. Con independencia de las condiciones climáticas, hay que adoptar medidas de protección si se vive en una zona donde se hayan notificado casos de COVID-19 o si se viaja a ella. La mejor manera de protegerse contra la COVID-19 es lavarse las manos con frecuencia. De esta manera se eliminan los virus que puedan estar en las manos y se evita la infección que podría producirse al tocarse los ojos, la boca y la nariz.`,
     `El nuevo coronavirus NO PUEDE transmitirse a través de picaduras de mosquitos
 
